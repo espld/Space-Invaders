@@ -4,6 +4,7 @@ from nave_jugador import Nave
 from balas import Bala
 from aliens import Alien
 import random
+import time
 
 pygame.init()
 
@@ -41,9 +42,6 @@ vidas = 5 #defino vidas del jugador
 
 cantidad_enemigos = 0
 
-perdido = False
-countdown_perdido = 0
-
 
 
 #defino una funcion para dibujar sobre la ventana
@@ -68,9 +66,6 @@ def dibujar_en_ventana():
 	ventana.blit(texto_vidas,(ANCHO_VENTANA - 120,10))
 	ventana.blit(texto_score,(ANCHO_VENTANA/4,10))
 
-	if perdido:
-		ventana.blit(texto_perdiste,(ANCHO_VENTANA/2,300))
-
 	#dibujo nave
 	jugador.dibujar_nave(ventana)
 
@@ -86,14 +81,7 @@ while running:
 	dibujar_en_ventana()
 
 	if vidas <= 0:
-		perdido = True
-		countdown_perdido += 1
-
-	if perdido:
-		if countdown_perdido > fps * 3:
-			running = False
-		else:
-			continue
+		running = False
 
 	if len(lista_aliens_enemigos) == 0:
 		nivel += 1
