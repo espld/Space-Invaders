@@ -13,7 +13,7 @@ class Alien:
         self.rect_alien = self.imagen_alien.get_rect()
         self.rect_alien.center = [x,y]
         self.balas = []
-        self.velocidad = random.randrange(1,3,1)
+        self.velocidad = random.randrange(2,3,1)
         self.score = score
         self.sonido_disparo = pygame.mixer.Sound("Juego\laser.wav")
 
