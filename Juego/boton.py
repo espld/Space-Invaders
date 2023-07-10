@@ -14,9 +14,9 @@ class Boton():
 		self.rect_boton = pygame.Rect((self.x,self.y),(300,60))
 
 	def dibujar(self,ventana):
-
-		pygame.draw.rect(ventana,colores.COLOR_VERDE,self.rect_boton)
-		#ventana.blit(self.imagen_rect,self.rect_boton)
+		
+		#pygame.draw.rect(ventana,colores.COLOR_VERDE,self.rect_boton)
+		ventana.blit(self.imagen_rect,self.rect_boton)
 
 	def chequeo_click(self):
 		if self.rect_boton.collidepoint(pygame.mouse.get_pos()):

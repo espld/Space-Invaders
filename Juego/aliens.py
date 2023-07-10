@@ -26,6 +26,7 @@ class Alien:
         bala = Bala(self.rect_alien.centerx,self.rect_alien.bottom,"Juego\\alien_bullet.png")
         self.balas.append(bala)
         self.sonido_disparo.play()
+        self.sonido_disparo.set_volume(0.3)
 
 
 

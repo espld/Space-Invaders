@@ -38,7 +38,7 @@ def obtener_datos():
     with sqlite3.connect("Juego\puntajes.db") as conexion:
 
         try:
-            cursor = conexion.execute("select * from puntajes order by puntaje desc limit 10")
+            cursor = conexion.execute("select * from puntajes order by puntaje desc limit 7")
             lista = cursor.fetchall()
             print(lista)
         except:

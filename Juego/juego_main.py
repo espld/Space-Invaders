@@ -4,7 +4,10 @@ from nave_jugador import Nave
 from balas import Bala
 from aliens import Alien
 import random
-import time
+from funciones import preguntar_nombre
+import juego_perdido
+
+
 import base_datos
 import re
 
@@ -12,27 +15,6 @@ import re
 
 
 pygame.init()
-
-
-def preguntar_nombre():
-
-    flag = True
-
-    while flag == True:
-
-        opcion_elegida = input("ingrese su nombre [3 letras]: ")
-
-        if re.match("[a-zA-Z]{3}$", opcion_elegida):
-	    
-            resultado = opcion_elegida
-	    
-            flag = False
-	    
-        else:
-            resultado = print("Opcion no valida")
-
-    return resultado
-
 
 
 def juego():
@@ -112,7 +94,7 @@ def juego():
 		dibujar_en_ventana()
 
 		if vidas <= 0:
-			base_datos.insertar_puntajes(preguntar_nombre(),score)
+			juego_perdido.juego_perdido(score)
 			running = False
 
 		if len(lista_aliens_enemigos) == 0:
@@ -157,7 +139,8 @@ def juego():
 					for alien in lista_aliens_enemigos:
 						if bala.rect_bala.colliderect(alien.rect_alien):
 							explosion = pygame.mixer.Sound("Juego\explosion.wav")
-							#explosion.play()
+							explosion.play()
+							explosion.set_volume(0.3)
 							score += alien.score
 							jugador.balas.remove(bala)
 							lista_aliens_enemigos.remove(alien)
@@ -199,9 +182,3 @@ def juego():
 		pygame.display.flip()
 
 	pygame.quit()
-
-
-#juego()
-
-
-#preguntar_nombre()

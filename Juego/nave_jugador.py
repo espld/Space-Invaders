@@ -31,6 +31,7 @@ class Nave:
         bala = Bala(self.rect_nave.centerx,self.rect_nave.top,"Juego\\bullet.png")
         self.balas.append(bala)
         self.sonido_disparo.play()
+        self.sonido_disparo.set_volume(0.3)
 
 
         
